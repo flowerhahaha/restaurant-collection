@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // set router: get homepage
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('show')
 })
 
 // start and listen on the express server 
