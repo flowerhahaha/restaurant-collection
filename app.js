@@ -19,6 +19,13 @@ app.get('/', (req, res) => {
   res.render('index', { restaurantList })
 })
 
+// set router: get show page
+app.get('/restaurants/:id', (req, res) => {
+  const { id } = req.params
+  const restaurantData = restaurantList.find(data => data.id === Number(id))
+  res.render('show', { restaurantData })
+})
+
 // start and listen on the express server 
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
