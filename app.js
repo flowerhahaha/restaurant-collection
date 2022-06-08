@@ -7,6 +7,12 @@ const app = express()
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+// set middleware: static files
+app.use(express.static('public'))
+
+// set middleware: body-parser
+app.use(express.urlencoded({ extended: true }))
+
 // set router: get homepage
 app.get('/', (req, res) => {
   res.render('index')
