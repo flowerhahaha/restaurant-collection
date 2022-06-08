@@ -1,6 +1,7 @@
 // packages and variables
 const express = require('express')
 const exphbs = require('express-handlebars')
+const restaurantList = require('./restaurant.json').results
 const app = express()
 
 // set template engine: express-handlebars
@@ -15,7 +16,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // set router: get homepage
 app.get('/', (req, res) => {
-  res.render('show')
+  res.render('index', { restaurantList })
 })
 
 // start and listen on the express server 
