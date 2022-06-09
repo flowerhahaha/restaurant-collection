@@ -31,7 +31,8 @@ app.get('/restaurants/:id', (req, res) => {
 app.get('/search', (req, res) => {
   const { keyword, category, rating } = req.query
   const filteredData = filterRestaurants(restaurantList, keyword, category, rating)
-  res.render('index', { restaurantList: filteredData, keyword, category, rating})
+  let notFound = filteredData.length ? false : true
+  res.render('index', { restaurantList: filteredData, notFound, keyword, category, rating })
 }) 
 
 // start and listen on the express server 
