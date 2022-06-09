@@ -6,13 +6,13 @@
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
           <!-- input -->
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..." value="" aria-describedby="search-button">
+          <input type="text" name="keyword" {{#if keyword}} value={{ keyword }} {{/if}} class="form-control" placeholder="輸入餐廳名稱" aria-label="Restaurant Name..." value="" aria-describedby="search-button">
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
-          <!-- genres -->
+          <!-- category -->
           <div class="ml-2">
-            <select id="search-genres" name="genres" class="form-control" aria-label="select by genres">
+            <select name="category" id="select-category" {{#if category}} data-value={{ category }} {{/if}} class="form-control" aria-label="select by category">
               <option value="All" selected>所有分類</option>
               <option value="日本料理">日本料理</option>
               <option value="義式餐廳">義式餐廳</option>
@@ -22,10 +22,10 @@
               <option value="酒吧">酒吧</option>
             </select>
           </div>
-          <!-- score -->
+          <!-- rating -->
           <div class="ml-2">
-            <select id="search-genres" name="score" class="form-control" aria-label="select by score">
-              <option value="0" selected>所有分數</option>
+            <select name="rating" id="select-rating" {{#if rating}} data-value={{ rating }} {{/if}}class="form-control" aria-label="select by rating">
+              <option value="0" selected>所有評分</option>
               <option value="4.5">4.5 星以上</option>
               <option value="4">4 星以上</option>
               <option value="3.5">3.5 星以上</option>
@@ -66,3 +66,5 @@
     </div>
   </div>
 </div>
+
+<script src="/javascripts/index.js"></script>

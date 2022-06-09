@@ -2,6 +2,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const restaurantList = require('./restaurant.json').results
+const filterRestaurants = require('./filterRestaurants')
 const app = express()
 
 // set template engine: express-handlebars
@@ -25,6 +26,13 @@ app.get('/restaurants/:id', (req, res) => {
   const restaurantData = restaurantList.find(data => data.id === Number(id))
   res.render('show', { restaurantData })
 })
+
+// set router: get search result
+app.get('/search', (req, res) => {
+  const { keyword, category, rating } = req.query
+  const filteredData = filterRestaurants(restaurantList, keyword, category, rating)
+  res.render('index', { restaurantList: filteredData, keyword, category, rating})
+}) 
 
 // start and listen on the express server 
 app.listen(3000, () => {
