@@ -12,7 +12,7 @@
           </div>
           <!-- category -->
           <div class="ml-2">
-            <select name="category" id="select-category" class="form-control" aria-label="select by category">
+            <select name="category" id="select-category" class="form-control" aria-label="select by category" onchange="form.submit()">
               <option value="All" selected>所有分類</option>
               <option value="日本料理">日本料理</option>
               <option value="義式餐廳">義式餐廳</option>
@@ -24,7 +24,7 @@
           </div>
           <!-- rating -->
           <div class="ml-2">
-            <select name="rating" id="select-rating" class="form-control" aria-label="select by rating">
+            <select name="rating" id="select-rating" class="form-control" aria-label="select by rating" onchange="form.submit()">
               <option value="0" selected>所有評分</option>
               <option value="4.5">4.5 星以上</option>
               <option value="4">4 星以上</option>
@@ -82,7 +82,7 @@
 
 {{#if rating}}
 <script>
-  // set up the selected category option
+  // set up the selected rating option
   const selectRating = document.querySelector("#select-rating")
   selectRating.value = '{{ rating }}'
 </script>
