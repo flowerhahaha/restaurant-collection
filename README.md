@@ -2,16 +2,16 @@
 ![demo](/public/images/S2-3_A1.gif)
 
 ## Features
-- Dispaly all restarants in homepage
-- Click the restarant to check its details information
-- Search restarants by name, category and rating
+- Display all restaurants in homepage
+- Click the restaurant to check its details information
+- Search restaurants by name, category and rating
 
 ## Getting Start
 
 1. Clone the project
 
 ```
-git clone https://github.com/flowerhahaha/restaurants-collection.git
+git clone https://github.com/flowerhahaha/restaurant-collection.git
 ```
 
 2. Install the required dependencies
