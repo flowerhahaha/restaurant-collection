@@ -87,3 +87,19 @@
   selectRating.value = '{{ rating }}'
 </script>
 {{/if}}
+
+<script>
+  // maintain scroll position after form submit
+  document.addEventListener("DOMContentLoaded", function() {
+    if (localStorage.getItem('myRestaurant') != null) {
+      window.scrollTo({
+        top: localStorage.getItem('myRestaurant'),
+        behavior: "smooth"
+      })
+    }
+  })
+  // store scroll position
+  document.addEventListener('scroll', function() {
+    localStorage.setItem('myRestaurant', window.pageYOffset)
+  })
+</script>
