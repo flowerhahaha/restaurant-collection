@@ -2,6 +2,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const restaurantList = require('./restaurant.json').results
+require('./config/mongoose')
 const app = express()
 
 // set template engine: express-handlebars
@@ -33,7 +34,7 @@ app.get('/search', (req, res) => {
     data.category.toLowerCase().includes(word)
   )
   const notFound = filteredData.length ? false : true
-  res.render('index', { restaurantList: filteredData, keyword: keyword.trim(), notFound})
+  res.render('index', { restaurantList: filteredData, keyword: keyword.trim(), notFound })
 }) 
 
 // start the server 

@@ -53,7 +53,7 @@
 <script>
   // maintain scroll position after form submit
   document.addEventListener("DOMContentLoaded", function() {
-    if (localStorage.getItem('myRestaurant') != null) {
+    if (localStorage.getItem('myRestaurant') !== null) {
       window.scrollTo({
         top: localStorage.getItem('myRestaurant'),
         behavior: "smooth"
