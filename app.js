@@ -33,15 +33,17 @@ app.get('/restaurants/:id', (req, res) => {
 
 // set router: get search result
 app.get('/search', (req, res) => {
-  const { keyword } = req.query
-  const word = keyword.trim().toLowerCase()
-  const filteredData = restaurantList.filter(data => 
-    data.name.toLowerCase().includes(word) || 
-    data.category.toLowerCase().includes(word)
-  )
-  const notFound = filteredData.length ? false : true
-  res.render('index', { restaurantList: filteredData, keyword: keyword.trim(), notFound })
-}) 
+  const keyword = req.query.keyword.trim()
+  const regExp = new RegExp(keyword, 'gi')
+  Restaurant
+    .find({ $or: [{ name: regExp }, { category: regExp }] })
+    .lean()
+    .then(filteredData => {
+      const notFound = filteredData.length ? false : true
+      res.render('index', { restaurantList: filteredData, keyword, notFound })
+    })
+    .catch(e => console.log(e))
+})
 
 // start the server 
 app.listen(3000, () => {
