@@ -6,15 +6,15 @@ const Restaurant = require('./models/restaurant')
 require('./config/mongoose')
 const app = express()
 
-// set template engine: express-handlebars
+// template engine: express-handlebars
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
-// set middleware: static files, body-parser
+// middleware: static files, body-parser
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 
-// set router: get homepage
+// router: get homepage
 app.get('/', (req, res) => {
   Restaurant.find()
     .lean()
@@ -22,12 +22,19 @@ app.get('/', (req, res) => {
     .catch(e => console.log(e))
 })
 
-// set router: get new page
+// router: get new page
 app.get('/restaurants/new', (req, res) => {
   res.render('new')
 })
 
-// set router: get show page
+// router: post new restaurant
+app.post('/restaurants', (req, res) => {
+  Restaurant.create(req.body)
+    .then(() => res.redirect('/'))
+    .catch(e => console.log(e))
+})
+
+// router: get show page
 app.get('/restaurants/:id', (req, res) => {
   const { id } = req.params
   Restaurant.findById(id)
@@ -36,7 +43,7 @@ app.get('/restaurants/:id', (req, res) => {
     .catch(e => console.log(e))
 })
 
-// set router: get search result
+// router: get search result
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
   const regExp = new RegExp(keyword, 'gi')

@@ -10,6 +10,10 @@ header {
   color: #226089;
 }
 
+.navbar .nav-link {
+  background-color: #4592af;
+}
+
 .banner {
   position: relative;
   z-index: -1;
