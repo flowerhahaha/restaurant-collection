@@ -22,6 +22,11 @@ app.get('/', (req, res) => {
     .catch(e => console.log(e))
 })
 
+// set router: get new page
+app.get('/restaurants/new', (req, res) => {
+  res.render('new')
+})
+
 // set router: get show page
 app.get('/restaurants/:id', (req, res) => {
   const { id } = req.params
