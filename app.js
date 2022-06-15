@@ -2,6 +2,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const restaurantList = require('./restaurant.json').results
+const Restaurant = require('./models/restaurant')
 require('./config/mongoose')
 const app = express()
 
@@ -15,14 +16,19 @@ app.use(express.urlencoded({ extended: true }))
 
 // set router: get homepage
 app.get('/', (req, res) => {
-  res.render('index', { restaurantList })
+  Restaurant.find()
+    .lean()
+    .then(restaurantList => res.render('index', { restaurantList }))
+    .catch(e => console.log(e))
 })
 
 // set router: get show page
 app.get('/restaurants/:id', (req, res) => {
   const { id } = req.params
-  const restaurantData = restaurantList.find(data => data.id === Number(id))
-  res.render('show', { restaurantData })
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurantData => res.render('show', { restaurantData }))
+    .catch(e => console.log(e))
 })
 
 // set router: get search result
