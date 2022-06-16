@@ -1,0 +1,100 @@
+<form class="mt-5 w-75 mx-auto" action="/restaurants/{{ restaurantData._id }}/edit" method="POST">
+  {{!-- Title --}}
+  <h3 class="mb-5 row justify-content-center">編輯餐廳</h3>
+
+  {{!-- Name --}}
+	<div class="mb-3 row justify-content-center">
+		<label for="name" class="col-form-label col-2">店名：</label>
+    <div class="col-8">
+      <input type="text" class="form-control" id="name" name="name" placeholder="{{ restaurantData.name }}" value="{{ restaurantData.name }}" required/>
+      <div class="invalid-feedback">請輸入店名</div>
+    </div> 
+	</div>
+
+  {{!-- English Name --}}
+	<div class="mb-3 row justify-content-center">
+		<label for="nameEn" class="col-form-label col-2">英文店名：</label>
+    <div class="col-8">
+      <input type="text" class="form-control" id="nameEn" name="nameEn" placeholder="{{ restaurantData.nameEn }}" value="{{ restaurantData.nameEn }}"/>
+    </div>
+	</div>
+
+  {{!-- Category --}}
+	<div class="mb-3 row justify-content-center">  
+		<label for="category" class="col-form-label col-2">類別：</label>
+    <div class="col-8">
+      <input list="categories" class="form-control" id="category" name="category" placeholder="{{ restaurantData.category }}" value="{{ restaurantData.category }}" required/>
+      <datalist id="categories">
+        <option>中東料理</option>
+        <option>日本料理</option>
+        <option>義式餐廳</option>
+        <option>美式</option>
+        <option>咖啡</option>
+        <option>酒吧</option>
+      </datalist>
+      <div class="invalid-feedback">請選擇類別</div>
+    </div>
+	</div>
+
+  {{!-- Image --}}
+	<div class="mb-3 row justify-content-center">
+		<label for="image" class="col-form-label col-2">照片：</label>
+    <div class="col-8">
+      <input type="url" class="form-control" id="image" name="image" placeholder="{{ restaurantData.image }}" value="{{ restaurantData.image }}" required/>
+      <div class="invalid-feedback">請輸入照片網址</div>
+    </div>
+	</div>
+
+  {{!-- Location --}}
+	<div class="mb-3 row justify-content-center">
+		<label for="location" class="col-form-label col-2">地址：</label>
+    <div class="col-8">
+      <input type="text" class="form-control" id="location" name="location" placeholder="{{ restaurantData.location }}" value="{{ restaurantData.location }}" required/>
+      <div class="invalid-feedback">請輸入地址</div>
+    </div>
+	</div>
+
+  {{!-- Phone --}}
+	<div class="mb-3 row justify-content-center">
+		<label for="phone" class="col-form-label col-2">電話：</label>
+    <div class="col-8">
+      <input type="tel" class="form-control" id="phone" name="phone" placeholder="{{ restaurantData.phone }}" value="{{ restaurantData.phone }}" required/>
+      <div class="invalid-feedback">請輸入電話</div>
+    </div>
+	</div>
+
+  {{!-- Google map --}}
+	<div class="mb-3 row justify-content-center">
+		<label for="googleMap" class="col-form-label col-2">Google Map：</label>
+    <div class="col-8">
+      <input type="url" class="form-control" id="googleMap" name="googleMap" placeholder="{{ restaurantData.googleMap }}" value="{{ restaurantData.googleMap }}" required/>
+      <div class="invalid-feedback">請輸入 Google Map 網址</div>
+    </div>
+	</div>
+
+  {{!-- Rating --}}
+	<div class="mb-3 row justify-content-center">
+		<label for="rating" class="col-form-label col-2">評分：</label>
+    <div class="col-8">
+      <input type="number" class="form-control" id="rating" name="rating" max="5" min="0" step="0.1" placeholder="{{ restaurantData.rating }}" value="{{ restaurantData.rating }}" required/>
+      <div class="invalid-feedback">請輸入評分，數字介於 0~5</div>
+    </div>
+	</div>
+
+  {{!-- Description --}}
+	<div class="mb-3 row justify-content-center">
+		<label for="description" class="col-form-label col-2">介紹：</label>
+    <div class="col-8">
+      <textarea type="url" class="form-control" id="description" name="description" placeholder={{ restaurantData.description }} required>{{ restaurantData.description }}</textarea>
+      <div class="invalid-feedback">請輸入介紹</div>
+    </div>
+	</div>
+
+  {{!-- Button --}}
+  <div class="row my-3 justify-content-center">
+    <a href="/" class="btn btn-primary mx-2 btn-back">返回</a>
+    <button type="submit" class="btn btn-primary mx-2 btn-save">儲存</button>
+  </div>
+</form>
+
+<script src="/javascripts/new.js"></script>

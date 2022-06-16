@@ -43,6 +43,25 @@ app.get('/restaurants/:id', (req, res) => {
     .catch(e => console.log(e))
 })
 
+// router: get edit page
+app.get('/restaurants/:id/edit', (req, res) => {
+  const { id } = req.params
+  Restaurant.findById(id)
+    .lean()
+    .then(restaurantData => {
+      res.render('edit', { restaurantData })
+    })
+})
+
+// router: post edited restaurant
+app.post('/restaurants/:id/edit', (req, res) => {
+  const { id } = req.params
+  Restaurant.findByIdAndUpdate(id, req.body, { new: true })
+    .then(restaurantData => restaurantData.save())
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(e => console.log(e))
+})
+
 // router: get search result
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
