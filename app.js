@@ -1,7 +1,6 @@
 // packages and variables
 const express = require('express')
 const exphbs = require('express-handlebars')
-const restaurantList = require('./restaurant.json').results
 const Restaurant = require('./models/restaurant')
 require('./config/mongoose')
 const app = express()
@@ -56,9 +55,16 @@ app.get('/restaurants/:id/edit', (req, res) => {
 // router: post edited restaurant
 app.post('/restaurants/:id/edit', (req, res) => {
   const { id } = req.params
-  Restaurant.findByIdAndUpdate(id, req.body, { new: true })
-    .then(restaurantData => restaurantData.save())
+  Restaurant.findByIdAndUpdate(id, req.body)
     .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(e => console.log(e))
+})
+
+// router: delete restaurant
+app.post('/restaurant/:id/delete', (req, res) => {
+  const { id } = req.params
+  Restaurant.findByIdAndDelete(id)
+    .then(() => res.redirect('/'))
     .catch(e => console.log(e))
 })
 
