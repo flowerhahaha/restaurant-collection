@@ -1,4 +1,11 @@
 const backBtn = document.querySelector('.btn-back')
+const saveBtn = document.querySelector('.btn-save')
+const form = document.querySelector('form')
+
+// add bootstrap form validation
+saveBtn.addEventListener('click', function onSubmitButtonClicked(event) {
+  form.classList.add('was-validated')
+})
 
  // add 'back to homepage' alert
 backBtn.addEventListener("click", e => {
