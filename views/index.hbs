@@ -37,10 +37,19 @@
               <div class="restaurant-category mb-1">
                 <i class="fas fa-utensils pr-2"></i>{{ this.category }}
               </div>
-              <span class="badge badge-pill badge-danger font-weight-normal">
-                {{ this.rating }}
-                <i class="fas fa-star fa-xs"></i>
-              </span>
+              <div class="d-flex align-items-center justify-content-between">
+                <span class="badge badge-pill badge-danger font-weight-normal">
+                  {{ this.rating }}
+                  <i class="fas fa-star fa-xs"></i>
+                </span>
+                <div class="d-flex">
+                  <a href="/restaurants/{{ this._id }}" class="btn btn-detail"><i class="fa-solid fa-circle-info"></i></a>                
+                  <a href="/restaurants/{{ this._id }}/edit" class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <form action="/restaurant/{{ this._id }}/delete" method="POST">
+                    <button class="btn btn-delete" type="submit"><i class="fa-solid fa-trash-can"></i></button>                    
+                  </form>              
+                </div>
+              </div>
             </div>
           </div>
         </a>

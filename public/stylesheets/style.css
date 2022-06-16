@@ -84,6 +84,24 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.btn-edit,
+.btn-delete,
+.btn-detail {
+  font-size: 18px;
+}
+
+.btn-edit:hover {
+  color: #4592af;
+}
+
+.btn-delete:hover {
+  color: red;
+}
+
+.btn-detail:hover {
+  color: green
+}
+
 .alert {
   max-width: 680px;
   text-align: center;
