@@ -1,6 +1,6 @@
 
 <form class="mt-5 w-75 mx-auto" action="/restaurants" method="POST">
-
+  {{!-- Title --}}
   <h3 class="mb-5 row justify-content-center">新增餐廳</h3>
 
   {{!-- Name --}}
@@ -84,7 +84,10 @@
 	</div>
 
   {{!-- Button --}}
-  <div class="row my-3 save-button justify-content-end">
-    <button type="submit" class="btn btn-primary">儲存</button>
+  <div class="row my-3 justify-content-center">
+    <a href="/" class="btn btn-primary mx-2 btn-back">返回</a>
+    <button type="submit" class="btn btn-primary mx-2 btn-save">儲存</button>
   </div>
 </form>
+
+<script src="/javascripts/new.js"></script>

@@ -10,7 +10,9 @@ header {
   color: #226089;
 }
 
-.navbar .nav-link {
+.navbar .nav-link,
+.btn-back,
+.btn-save {
   background-color: #4592af;
 }
 
@@ -85,10 +87,6 @@ header {
 .alert {
   max-width: 680px;
   text-align: center;
-}
-
-.save-button {
-  margin-right: 82px;
 }
 
 @media screen and (max-width: 992px) {
