@@ -14,7 +14,7 @@ document.addEventListener('scroll', function() {
 })
 
 // alert to confirm the deletion
-const cards = document.querySelector('.card-columns')
+const cards = document.querySelector('.restaurant-cards')
 cards.addEventListener('click', e => {
   if (!(e.target.matches('.btn-delete') || e.target.matches('.fa-trash-can'))) return
   e.preventDefault()
