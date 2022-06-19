@@ -16,6 +16,17 @@ header {
   background-color: #4592af;
 }
 
+.btn-autofill {
+  width: 120px;
+  background-color: #4592af;
+}
+
+.btn-back:hover,
+.btn-save:hover,
+.btn-autofill:hover {
+  background-color: #2f819f;
+}
+
 .banner {
   position: relative;
   z-index: -1;
