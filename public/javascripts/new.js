@@ -3,13 +3,15 @@ const saveBtn = document.querySelector('.btn-save')
 const form = document.querySelector('.details-form')
 
 // add autocomplete input by google map api
-const autocompleteInput = document.querySelector('#autocomplete')
-const options = {
-  types: ['establishment'],
-  componentRestrictions: {'country' : ['TW']},
-  fields: ['name', 'address_components']
+if (document.querySelector('#autocomplete')) {
+  const autocompleteInput = document.querySelector('#autocomplete')
+  const options = {
+    types: ['establishment'],
+    componentRestrictions: {'country' : ['TW']},
+    fields: ['name', 'address_components']
+  }
+  const autocomplete = new google.maps.places.Autocomplete(autocompleteInput, options)
 }
-const autocomplete = new google.maps.places.Autocomplete(autocompleteInput, options)
 
 // add bootstrap form validation
 saveBtn.addEventListener('click', function onSubmitButtonClicked(event) {
