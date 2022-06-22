@@ -2,6 +2,7 @@ const backBtn = document.querySelector('.btn-back')
 const saveBtn = document.querySelector('.btn-save')
 const form = document.querySelector('.details-form')
 
+// add autocomplete input by google map api
 const autocompleteInput = document.querySelector('#autocomplete')
 const options = {
   types: ['establishment'],

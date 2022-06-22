@@ -4,15 +4,17 @@ const exphbs = require('express-handlebars')
 const Restaurant = require('./models/restaurant')
 require('./config/mongoose')
 const axios = require('axios')
+const methodOverride = require('method-override') 
 const app = express()
 
 // template engine: express-handlebars
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
-// middleware: static files, body-parser
+// middleware: static files, body-parser, method-override
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 // router: get homepage
 app.get('/', (req, res) => {
@@ -54,7 +56,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 
 // router: post edited restaurant
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const { id } = req.params
   Restaurant.findByIdAndUpdate(id, req.body)
     .then(() => res.redirect(`/restaurants/${id}`))
@@ -62,7 +64,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
 })
 
 // router: delete restaurant
-app.post('/restaurant/:id/delete', (req, res) => {
+app.delete('/restaurant/:id', (req, res) => {
   const { id } = req.params
   Restaurant.findByIdAndDelete(id)
     .then(() => res.redirect('/'))
@@ -72,7 +74,7 @@ app.post('/restaurant/:id/delete', (req, res) => {
 // router: get search result
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
-  const regExp = new RegExp(keyword, 'gi')
+  const regExp = new RegExp(keyword, 'i')
   Restaurant
     .find({ $or: [{ name: regExp }, { category: regExp }] })
     .lean()
@@ -83,7 +85,7 @@ app.get('/search', (req, res) => {
     .catch(e => console.log(e))
 })
 
-// router: get new page with restaurant info autofilled by google API 
+// router: get new page with restaurant info autofilled by google map API 
 app.get('/restaurants/new/autofill', (req, res) => {
   const address = encodeURI(req.query.address)
   const baseURL = 'https://maps.googleapis.com/maps/api/place'

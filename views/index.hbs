@@ -47,7 +47,7 @@
                   <div class="d-flex">
                     <a href="/restaurants/{{ this._id }}" class="btn btn-detail"><i class="fa-solid fa-circle-info"></i></a>                
                     <a href="/restaurants/{{ this._id }}/edit" class="btn btn-edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <form action="/restaurant/{{ this._id }}/delete" method="POST" class="form-delete form-{{ this._id }}">
+                    <form action="/restaurant/{{ this._id }}?_method=DELETE" method="POST" class="form-delete form-{{ this._id }}">
                       <button class="btn btn-delete" type="submit" data-id="{{ this._id }}"><i class="fa-solid fa-trash-can" data-id="{{ this._id }}"></i></button>                    
                     </form>              
                   </div>
