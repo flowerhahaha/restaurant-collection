@@ -7,4 +7,9 @@ router.use('/', home)
 router.use('/restaurants', restaurants)
 router.use('/search', search)
 
+router.get('*', (req, res) => {
+  res.status(404)
+  res.render('404')
+})
+
 module.exports = router

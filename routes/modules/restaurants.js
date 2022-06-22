@@ -7,14 +7,14 @@ router.get('/new', (req, res) => {
   res.render('new')
 })
 
-// router: post new restaurant
+// router: post a new restaurant
 router.post('/', (req, res) => {
   Restaurant.create(req.body)
     .then(() => res.redirect('/'))
     .catch(e => console.log(e))
 })
 
-// router: get show page
+// router: get the show page
 router.get('/:id', (req, res) => {
   const { id } = req.params
   Restaurant.findById(id)
@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
     .catch(e => console.log(e))
 })
 
-// router: get edit page
+// router: get the edit page
 router.get('/:id/edit', (req, res) => {
   const { id } = req.params
   Restaurant.findById(id)
@@ -33,7 +33,7 @@ router.get('/:id/edit', (req, res) => {
     })
 })
 
-// router: post edited restaurant
+// router: put the edited restaurant
 router.put('/:id', (req, res) => {
   const { id } = req.params
   Restaurant.findByIdAndUpdate(id, req.body)
@@ -41,7 +41,7 @@ router.put('/:id', (req, res) => {
     .catch(e => console.log(e))
 })
 
-// router: delete restaurant
+// router: delete the restaurant
 router.delete('/:id', (req, res) => {
   const { id } = req.params
   Restaurant.findByIdAndDelete(id)
