@@ -1,11 +1,13 @@
 # My Restaurant Collection
-![demo](/public/images/S2-3_A7_01.gif)
+![demo](/public/images/S2-3_A8.gif)
 ![demo](/public/images/S2-3_A7_02.gif)
 
 ## Features
 - Display all restaurants on homepage
 - Click the restaurant to check its details
-- Search restaurants by name and category
+- Search restaurants by name and location
+- Select restaurants by category
+- Sort restaurants by name and rating
 - Create a restaurant with details autofilled by Google API
 - Edit the details of a restaurant
 - Delete a restaurant, come with a confirmation alert
@@ -73,6 +75,7 @@ App is running on http://localhost:3000
 -  express-handlebars @ 4.0.2
 -  mongoose @ 6.3.8
 -  mongodb @ 4.5.0
+-  method-override @ 3.0.0
 -  axios @ 0.27.2
 -  sweet-alert @ 2.1.2
 -  bootstrap @ 4.3.1
