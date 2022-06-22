@@ -6,9 +6,31 @@
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
           <!-- input -->
-          <input type="text" name="keyword" {{#if keyword}} value={{ keyword }} {{/if}} class="form-control" placeholder="輸入餐廳名稱或類別" aria-label="Restaurant name or category" aria-describedby="search-button">
+          <input type="text" name="keyword" {{#if keyword}} value={{ keyword }} {{/if}} class="form-control" placeholder="輸入餐廳名稱或地區" aria-label="Restaurant name or location" aria-describedby="search-button">
           <div class="input-group-append">
-          <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+          </div>
+          <!-- category -->
+          <div class="ml-2">
+            <select name="category" id="select-category" class="form-control" aria-label="select by category" onchange="form.submit()">
+              <option value="All" selected>所有分類</option>
+              <option value="日本料理">日本料理</option>
+              <option value="義式餐廳">義式餐廳</option>
+              <option value="美式">美式</option>
+              <option value="咖啡">咖啡</option>
+              <option value="中東料理">中東料理</option>
+              <option value="酒吧">酒吧</option>
+            </select>
+          </div>
+          <!-- sorting -->
+          <div class="ml-2">
+            <select name="sorting" id="sorting" class="form-control" aria-label="sorting" onchange="form.submit()">
+              <option value="_id" selected>排序</option>
+              <option value="name">店名：A -> Z</option>
+              <option value="-name">店名：Z -> A</option>
+              <option value="-rating">評分：高 -> 低</option>
+              <option value="rating">評分：低 -> 高</option>
+            </select>
           </div>
         </div>
       </form>
@@ -16,11 +38,11 @@
   </div>
 </div>
 
-{{#if notFound}}
+{{#unless restaurantList}}
 <div class="alert alert-danger mt-3 mx-auto" role="alert">
   找不到符合條件的餐廳，請重新輸入
 </div>
-{{/if}}
+{{/unless}}
 
 <!-- restaurant list -->
 <div class="container mt-5">
@@ -61,5 +83,20 @@
     </div>
   </div>
 </div>
+
+
+{{#if sorting}}
+<script>
+  // set up the selected sorting option
+  document.querySelector("#sorting").value = '{{ sorting }}'
+</script>
+{{/if}}
+
+{{#if category}}
+<script>
+  // set up the selected category option
+  document.querySelector("#select-category").value = '{{ category }}'
+</script>
+{{/if}}
 
 <script src="/javascripts/index.js"></script>
