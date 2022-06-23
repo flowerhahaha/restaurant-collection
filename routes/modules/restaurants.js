@@ -49,27 +49,4 @@ router.delete('/:id', (req, res) => {
     .catch(e => console.log(e))
 })
 
-// router: get new page with restaurant info autofilled by google map API 
-router.get('/new/autofill', (req, res) => {
-  const address = encodeURI(req.query.address)
-  const baseURL = 'https://maps.googleapis.com/maps/api/place'
-  const fields = 'name,formatted_phone_number,formatted_address,rating,url,website'
-  const configGetId = {
-    method: 'get',
-    url: `${baseURL}/findplacefromtext/json?input=${address}&inputtype=textquery&fields=place_id&key=${process.env.GOOGLE_MAP_API}`
-  }
-
-  axios(configGetId)
-    .then(response => {
-      const placeId = response.data.candidates[0].place_id
-      const configGetDetail = {
-        method: 'get',
-        url: `${baseURL}/details/json?place_id=${placeId}&fields=${fields}&key=${process.env.GOOGLE_MAP_API}&language=zh-TW`
-      }
-      return axios(configGetDetail)
-    })
-    .then(response => res.render('new', {restaurantData: response.data.result}))
-    .catch(error => console.log(error));
-})
-
 module.exports = router
