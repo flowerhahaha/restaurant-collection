@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const Restaurant = require('../../models/restaurant')
-const axios = require('axios')
 
 // router: get new page
 router.get('/new', (req, res) => {
