@@ -1,0 +1,18 @@
+{
+  "sortingOptions": [
+    {"value": "_id", "display": "排序"}, 
+    {"value": "name", "display": "店名：A -> Z"},
+    {"value": "-name", "display": "店名：Z -> A"},
+    {"value": "-rating", "display": "評分：高 -> 低"},
+    {"value": "rating", "display": "評分：低 -> 高"} 
+  ],
+  "categoryOptions": [
+    {"value": "All", "display": "所有分類"},
+    {"value": "日本料理", "display": "日本料理"},
+    {"value": "義式餐廳", "display": "義式餐廳"},
+    {"value": "美式", "display": "美式"},
+    {"value": "咖啡", "display": "咖啡"},
+    {"value": "中東料理", "display": "中東料理"},
+    {"value": "酒吧", "display": "酒吧"}
+  ]
+}

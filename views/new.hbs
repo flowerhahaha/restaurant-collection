@@ -31,12 +31,9 @@
     <div class="col-8">
       <input list="categories" class="form-control" id="category" name="category" placeholder="中東料理" required/>
       <datalist id="categories">
-        <option>中東料理</option>
-        <option>日本料理</option>
-        <option>義式餐廳</option>
-        <option>美式</option>
-        <option>咖啡</option>
-        <option>酒吧</option>
+        {{#each categoryOptions}}
+        <option value="{{ this.value }}">{{ this.display }}</option>
+        {{/each}}
       </datalist>
       <div class="invalid-feedback">請選擇類別</div>
     </div>

@@ -13,23 +13,17 @@
           <!-- category -->
           <div class="ml-2">
             <select name="category" id="select-category" class="form-control" aria-label="select by category" onchange="form.submit()">
-              <option value="All" selected>所有分類</option>
-              <option value="日本料理">日本料理</option>
-              <option value="義式餐廳">義式餐廳</option>
-              <option value="美式">美式</option>
-              <option value="咖啡">咖啡</option>
-              <option value="中東料理">中東料理</option>
-              <option value="酒吧">酒吧</option>
+              {{#each categoryOptions}}
+              <option value="{{ this.value }}">{{ this.display }}</option>
+              {{/each}}
             </select>
           </div>
           <!-- sorting -->
           <div class="ml-2">
             <select name="sorting" id="sorting" class="form-control" aria-label="sorting" onchange="form.submit()">
-              <option value="_id" selected>排序</option>
-              <option value="name">店名：A -> Z</option>
-              <option value="-name">店名：Z -> A</option>
-              <option value="-rating">評分：高 -> 低</option>
-              <option value="rating">評分：低 -> 高</option>
+              {{#each sortingOptions}}
+              <option value="{{ this.value }}">{{ this.display }}</option>
+              {{/each}}
             </select>
           </div>
         </div>

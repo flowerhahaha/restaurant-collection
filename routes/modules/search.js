@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Restaurant = require('../../models/restaurant')
+const options = require('../../options.json')
 
 // router: get search result
 router.get('/', (req, res) => {
@@ -9,6 +10,7 @@ router.get('/', (req, res) => {
   const regExp = new RegExp(keyword, 'i')
   // if the selected category is 'All', use /./ to match any single character
   const categoryValue = category === 'All' ? /./ : category
+  const { sortingOptions, categoryOptions } = options
 
   Restaurant
     .find({    
@@ -19,7 +21,7 @@ router.get('/', (req, res) => {
     })
     .lean()
     .sort(sorting)
-    .then(filteredData => res.render('index', { restaurantList: filteredData, keyword, sorting, category }))
+    .then(filteredData => res.render('index', { restaurantList: filteredData, keyword, sorting, category, sortingOptions, categoryOptions  }))
     .catch(e => console.log(e))
 })
 

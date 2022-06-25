@@ -1,9 +1,13 @@
 const router = require('express').Router()
 const Restaurant = require('../../models/restaurant')
+const options = require('../../options.json')
 
 // router: get new page
 router.get('/new', (req, res) => {
-  res.render('new')
+  const { categoryOptions } = options
+  // remove 'all' option
+  categoryOptions.shift()
+  res.render('new', { categoryOptions })
 })
 
 // router: post a new restaurant
@@ -25,10 +29,14 @@ router.get('/:id', (req, res) => {
 // router: get the edit page
 router.get('/:id/edit', (req, res) => {
   const { id } = req.params
+  const { categoryOptions } = options
+  // remove 'all' option
+  categoryOptions.shift()
+
   Restaurant.findById(id)
     .lean()
     .then(restaurantData => {
-      res.render('edit', { restaurantData })
+      res.render('edit', { restaurantData, categoryOptions })
     })
 })
 
