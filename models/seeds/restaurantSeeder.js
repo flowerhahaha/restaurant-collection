@@ -6,5 +6,6 @@ db.once('open', () => {
 	Restaurant.create(restaurantList)
 		.then(() => console.log('The restaurant seed has been created.'))
 		.catch(e => console.log(e))
+		.finally(() => db.close())
 })
 

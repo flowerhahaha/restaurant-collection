@@ -3,10 +3,12 @@ const Restaurant = require('../../models/restaurant')
 
 // router: get search result
 router.get('/', (req, res) => {
-  const keyword = req.query.keyword.trim()
+  // if keyword is null, return undefined
+  const keyword = req.query.keyword?.trim()
   const { sorting, category } = req.query
   const regExp = new RegExp(keyword, 'i')
-  categoryValue = category === 'All' ? /./ : category
+  // if the selected category is 'All', use /./ to match any single character
+  const categoryValue = category === 'All' ? /./ : category
 
   Restaurant
     .find({    
