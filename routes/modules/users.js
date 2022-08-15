@@ -35,7 +35,7 @@ router.post('/register', async (req, res, next) => {
     }
     // else store the user register information
     await User.create({ name, email, password: bcrypt.hashSync(password, bcrypt.genSaltSync(10), null) })
-    // req.flash('success_msg', 'Register successfully! Please login to your account.')
+    req.flash('success_msg', 'Register successfully! Please login to your account.')
     res.redirect('/users/login')
   } catch(e) {
     console.log(e)

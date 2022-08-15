@@ -8,6 +8,7 @@ const exphbs = require('express-handlebars')
 const Restaurant = require('./models/restaurant')
 require('./config/mongoose')
 const methodOverride = require('method-override') 
+const flash = require('connect-flash') 
 const routes = require('./routes')
 const app = express()
 
@@ -26,6 +27,14 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+
+// middleware: flash
+app.use(flash())
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  next()
+})
 
 // middleware: routes
 app.use(routes)
