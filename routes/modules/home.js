@@ -2,7 +2,7 @@ const router = require('express').Router()
 const Restaurant = require('../../models/restaurant')
 const options = require('../../options.json')
 
-// router: get homepage
+// get homepage
 router.get('/', (req, res) => {
   const { sortingOptions, categoryOptions } = options
 

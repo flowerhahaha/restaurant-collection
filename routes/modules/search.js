@@ -2,7 +2,7 @@ const router = require('express').Router()
 const Restaurant = require('../../models/restaurant')
 const options = require('../../options.json')
 
-// router: get search result
+// get search result
 router.get('/', (req, res) => {
   // if keyword is null, return undefined
   const keyword = req.query.keyword?.trim()
