@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const express = require('express')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 const exphbs = require('express-handlebars')
 const Restaurant = require('./models/restaurant')
 require('./config/mongoose')
@@ -27,6 +28,9 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+
+// middleware: passport initialize and authenticate
+usePassport(app)
 
 // middleware: flash
 app.use(flash())
