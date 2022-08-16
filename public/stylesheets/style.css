@@ -10,7 +10,7 @@ header {
   color: #226089;
 }
 
-.navbar .nav-link,
+.nav-btn,
 .btn-back,
 .btn-save {
   background-color: #4592af;
@@ -21,10 +21,12 @@ header {
   background-color: #4592af;
 }
 
+.nav-btn:hover,
 .btn-back:hover,
 .btn-save:hover,
 .btn-autofill:hover {
   background-color: #2f819f;
+  color: #FFF;
 }
 
 .banner {

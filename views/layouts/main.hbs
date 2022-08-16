@@ -17,17 +17,24 @@
 
 <body>
   <header>
-  <!-- navigation -->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-          <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png" width="30" height="30" class="d-inline-block align-top" alt="好。吃">
-          我的餐廳清單
-      </a>
-      <a class="nav-link btn btn-success" href="/restaurants/new">新增</a>
-    </div>
-  </nav>
-  <div class="banner"></div>
+    <!-- navigation -->
+    <nav class="navbar navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png" width="30" height="30" class="d-inline-block align-top" alt="好。吃">
+            {{#if isAuthenticated}}{{user.name}}'s {{/if}}餐廳清單
+        </a>
+        {{#if isAuthenticated}}
+        <div class="d-flex">
+          <a class="nav-btn btn btn-outline-light mx-3" href="/restaurants/new">新增</a>
+          <a href="/users/logout" class="nav-btn btn btn-outline-light">Logout</a>
+        </div>
+        {{else}}
+        <a href="/users/login" class="nav-btn btn btn-success btn-outline-light">Login</a>
+        {{/if}}
+      </div>
+    </nav>
+    <div class="banner"></div>
   </header>
 
   {{{ body }}}

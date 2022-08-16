@@ -41,6 +41,7 @@ module.exports = app => {
   // store user data in req object if the user already logged in
   passport.deserializeUser((id, done) => {
     User.findById(id)
+      .lean()
       .then(user => done(null, user))
       .catch(err => done(err, null))
   })
