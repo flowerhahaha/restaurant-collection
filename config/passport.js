@@ -1,6 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const GoogleStrategy = require('passport-google-oauth20').Strategy
+const FacebookStrategy = require('passport-facebook').Strategy
 const bcrypt = require('bcryptjs')
 const User = require('../models/user')
 
@@ -39,7 +40,18 @@ module.exports = app => {
     {    
       clientID: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: "http://localhost:3000/auth/google/callback"
+      callbackURL: process.env.GOOGLE_CALLBACK
+    },
+    thirdPartyOAuthCallback
+  ))
+
+  // login with facebook
+  passport.use(new FacebookStrategy(
+    {    
+      clientID: process.env.FACEBOOK_ID,
+      clientSecret: process.env.FACEBOOK_SECRET,
+      callbackURL: process.env.FACEBOOK_CALLBACK,
+      profileFields: ['email', 'displayName']
     },
     thirdPartyOAuthCallback
   ))
@@ -61,6 +73,7 @@ module.exports = app => {
 // callback function for google and facebook login strategy
 async function thirdPartyOAuthCallback (accessToken, refreshToken, profile, done) {
   const { name, email } = profile._json
+  console.log(profile)
   try {
     // if the user doesn't exist, generate a random password and store the userData first
     let userData = await User.findOne({ email })
