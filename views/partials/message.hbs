@@ -10,6 +10,12 @@
 </div>
 {{/if}}
 
+{{#if danger_msg}}
+<div class="alert alert-danger mt-3 mx-auto" role="alert">
+  {{danger_msg}}
+</div>
+{{/if}}
+
 {{#if errors}}
   {{#each errors}}
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
