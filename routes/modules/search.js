@@ -3,7 +3,7 @@ const Restaurant = require('../../models/restaurant')
 const { sortingOptions, categoryOptions } = require('../../options.json')
 
 // get search result
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
   // if keyword is null, return undefined
   const keyword = req.query.keyword?.trim()
   const { sorting, category } = req.query
@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
       }
       res.render('index', { restaurantList: filteredData, keyword, sorting, category, sortingOptions, categoryOptions  })
     })
-    .catch(e => console.log(e))
+    .catch(e => next(e))
 })
 
 module.exports = router

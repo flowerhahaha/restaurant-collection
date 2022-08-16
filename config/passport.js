@@ -73,7 +73,6 @@ module.exports = app => {
 // callback function for google and facebook login strategy
 async function thirdPartyOAuthCallback (accessToken, refreshToken, profile, done) {
   const { name, email } = profile._json
-  console.log(profile)
   try {
     // if the user doesn't exist, generate a random password and store the userData first
     let userData = await User.findOne({ email })

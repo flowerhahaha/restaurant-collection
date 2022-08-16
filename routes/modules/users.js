@@ -45,7 +45,6 @@ router.post('/register', async (req, res, next) => {
     req.flash('success_msg', 'Register successfully! Please login to your account.')
     res.redirect('/users/login')
   } catch(e) {
-    console.log(e)
     next(e)
   }
 })

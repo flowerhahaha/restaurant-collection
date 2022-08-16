@@ -3,7 +3,7 @@ const Restaurant = require('../../models/restaurant')
 const { sortingOptions, categoryOptions } = require('../../options.json')
 
 // get homepage
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
   Restaurant.find({ userId: req.user._id })
     .lean()
     .then(restaurantList => {
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       }
       res.render('index', { restaurantList, sortingOptions, categoryOptions })
      })
-    .catch(e => console.log(e))
+    .catch(e => next(e))
 })
 
 module.exports = router
