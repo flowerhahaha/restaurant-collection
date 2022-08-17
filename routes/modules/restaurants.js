@@ -1,11 +1,9 @@
 const router = require('express').Router()
 const Restaurant = require('../../models/restaurant') 
+const categoryOptions = require('../../options.json').categoryOptions.slice(1) // remove 'all' option
 
 // get new page
 router.get('/new', (req, res) => {
-  // remove 'all' option
-  const categoryOptions = require('../../options.json').categoryOptions.slice(1)
-
   res.render('new', { categoryOptions })
 })
 
@@ -33,8 +31,6 @@ router.get('/:id', (req, res, next) => {
 router.get('/:id/edit', (req, res, next) => {
   const _id = req.params.id
   const userId = req.user._id
-  // remove 'all' option
-  const categoryOptions = require('../../options.json').categoryOptions.slice(1)
 
   Restaurant.findOne({ _id, userId })
     .lean()
