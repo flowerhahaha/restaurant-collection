@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const express = require('express')
 const session = require('express-session')
+const MongoStore = require('connect-mongo')
 const usePassport = require('./config/passport')
 const exphbs = require('express-handlebars')
 require('./config/mongoose')
@@ -25,7 +26,14 @@ app.use(methodOverride('_method'))
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    touchAfter: 60 * 60 * 24 // 24 hrs
+  }),
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
+  }
 }))
 
 // middleware: passport initialize and authenticate
