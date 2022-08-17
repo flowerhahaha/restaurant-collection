@@ -3,7 +3,8 @@
 ![demo](/public/images/S2-3_A7_02.gif)
 
 ## Features
-- Display all restaurants on homepage
+- Register via email, Facebook, or Google account
+- Login to see user's own restaurants
 - Click the restaurant to check its details
 - Search restaurants by name and location
 - Select restaurants by category
@@ -32,51 +33,39 @@ npm install
 npm i nodemon
 ```
 
-4. Set environment variable: MONGODB_URI 
+4. Set environment variables in .env file according to .env.example
 
 ```
-MONGODB_URI=your connection string
+mkdir .env
 ```
 
-5. Set environment variable: GOOGLE_MAP_API<br>
-(make sure to enable Places API and Maps JavaScript API) 
-
-```
-GOOGLE_MAP_API=your google map API key
-```
-
-6. Replace the "GOOGLE_MAP_API" string with your own key in main.hbs
+5. Replace the "GOOGLE_MAP_API" string with your own key in main.hbs
 
 ```
 <script src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_MAP_API&libraries=places"></script>
 ```
 
-7. Seed your database 
+6. Seed your database 
 
 ```
 npm run seed
 ```
 
-8. Start the server
+7. Start the server
 
 ```
 npm run dev
 ```
 
-9. Execute successfully if seeing following message
+8. Execute successfully if seeing following message
 
 ```
 App is running on http://localhost:3000
 ```
 
 ## Built With
--  node.js @ 16.15.0
--  express @ 4.17.1
--  express-handlebars @ 4.0.2
--  mongoose @ 6.3.8
--  mongodb @ 4.5.0
--  method-override @ 3.0.0
--  axios @ 0.27.2
--  sweet-alert @ 2.1.2
--  bootstrap @ 4.3.1
--  font-awesome @ 5.8.1
+-  Runtime: node @ 16.14.2
+-  Framework: express @ 4.17.1
+-  Database: mongoose @ 6.3.8
+-  View Engine: express-handlebars @ 4.0.2
+-  Check package.json for other dependencies
