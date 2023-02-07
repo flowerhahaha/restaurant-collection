@@ -1,4 +1,6 @@
 # My Restaurant Collection
+It's a [website](https://restaurant-list-yen.herokuapp.com/users/login) to collect your favorite restaurants.
+
 ![demo](/public/images/S2-3_A8.gif)
 ![demo](/public/images/S2-3_A7_02.gif)
 
